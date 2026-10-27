@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cost-optimizer-backend
+    ports:
+      - "8080:8080"
+    environment:
+      # For local testing, set your AWS credentials here.
+      # Never commit real credentials — use environment variables or IAM role.
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cost-optimizer-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

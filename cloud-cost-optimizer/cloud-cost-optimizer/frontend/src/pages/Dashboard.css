@@ -1,0 +1,248 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.dashboard {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.dash-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dash-title {
+  margin: 0 0 4px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.dash-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.savings-badge {
+  background: linear-gradient(135deg, #198754, #0d6e40);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── KPI Row ─────────────────────────────────────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  border-left: 4px solid #0d6efd;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.stat-sub {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+.trend-up   { color: #dc3545; }
+.trend-down { color: #198754; }
+
+/* ── Tabs ────────────────────────────────────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #666;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s;
+}
+
+.tab-btn:hover {
+  color: #0d6efd;
+}
+
+.tab-btn.active {
+  color: #0d6efd;
+  border-bottom-color: #0d6efd;
+}
+
+.tab-badge {
+  background: #dc3545;
+  color: white;
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* ── Charts ──────────────────────────────────────────────────────────────────── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.chart-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.chart-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.chart-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: #1a1a2e;
+}
+
+/* ── Cost Table ──────────────────────────────────────────────────────────────── */
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.cost-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: #f8f9fa;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.cost-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.cost-table tr:hover td {
+  background: #fafafa;
+}
+
+.amount-col {
+  font-weight: 600;
+  color: #1a1a2e;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-cell {
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 80px;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* ── Loading / Error ─────────────────────────────────────────────────────────── */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 60vh;
+  font-size: 1rem;
+  color: #666;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #e9ecef;
+  border-top-color: #0d6efd;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-banner {
+  background: #fff3f3;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin: 24px;
+  font-size: 0.95rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

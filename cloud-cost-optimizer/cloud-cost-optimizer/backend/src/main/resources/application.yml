@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: cloud-cost-optimizer
+
+  cache:
+    type: caffeine
+
+server:
+  port: ${PORT:8080}
+
+# AWS configuration — provide via environment variables
+aws:
+  region: ${AWS_REGION:us-east-1}
+  access-key-id: ${AWS_ACCESS_KEY_ID:}
+  secret-access-key: ${AWS_SECRET_ACCESS_KEY:}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,caches
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.mahesh.costoptimizer: DEBUG
+    software.amazon.awssdk: WARN
